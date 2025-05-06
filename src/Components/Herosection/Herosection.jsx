@@ -4,6 +4,7 @@ import firstheroimg from '../../assets/images/firstheroimg.jpg';
 import secondheroimg from '../../assets/images/secondhero.jpg';
 import thirdheroimg from '../../assets/images/thirdhero.jpg';
 import logo from '../../assets/images/genpaylogo.png';
+import WaitlistForm from '../WaitlistForm/WaitlistForm';
 const Herosection = () => {
   return (
     <div className="min-h-screen text-white relative">
@@ -80,7 +81,9 @@ const Herosection = () => {
           </div>
         </main>
       </div>
+   
     </div>
+    
   );
 };
 
