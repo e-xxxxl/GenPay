@@ -5,6 +5,7 @@ import './App.css'
 import Navbar from './Components/Navbar/Navbar'
 import Herosection from './Components/Herosection/Herosection'
 import WaitlistForm from './Components/WaitlistForm/WaitlistForm'
+import Footer from './Components/Footer/Footer'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -13,6 +14,7 @@ function App() {
     <>
      <Herosection/>
     <WaitlistForm/>
+    <Footer/>
 
 
     </>
