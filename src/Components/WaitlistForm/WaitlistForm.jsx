@@ -19,7 +19,7 @@ const WaitlistForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const url = 'https://script.google.com/macros/s/AKfycbzC_F9klO_WCOHTKS0Hg2X6sq5pgMI9XRzljJ65Z-jx6t23-zwgj845cR2M0TAnVpvZPQ/exec';
+    const url = 'https://genpay-backend-1.onrender.com';
 
     try {
       const response = await axios.post(url, formData, {
