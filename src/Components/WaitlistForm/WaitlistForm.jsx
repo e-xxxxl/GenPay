@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import axios from 'axios';
 const WaitlistForm = () => {
   const [formData, setFormData] = useState({
     fullname: '',
@@ -18,25 +18,17 @@ const WaitlistForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Use a proxy endpoint if you have one, or the direct GAS URL
-    // const url = '/api/submit-waitlist'; // Recommended proxy approach
-    // OR direct GAS URL with no-cors:
-     const url = 'https://script.google.com/macros/s/AKfycbwbKz0z2fKjBUE7DVFC3yRqXUoqcuzUKLvV62KrzY4nN6lBcIT08hTkqZCuTeTzZau8ug/exec';
-    
+
+    const url = 'https://script.google.com/macros/s/AKfycbzC_F9klO_WCOHTKS0Hg2X6sq5pgMI9XRzljJ65Z-jx6t23-zwgj845cR2M0TAnVpvZPQ/exec';
+
     try {
-      const response = await fetch(url, {
-        method: 'POST',
-        // mode: 'no-cors', // Only use with direct GAS URL
+      const response = await axios.post(url, formData, {
         headers: {
           'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData)
+        }
       });
-      
-      // Only try to parse JSON if not using no-cors
-      if (response.ok) {
-        const data = await response.json();
+
+      if (response.status === 200) {
         setStatus('🎉 Successfully joined the waitlist!');
         setFormData({ fullname: '', email: '', phonenumber: '' });
       } else {
@@ -47,6 +39,7 @@ const WaitlistForm = () => {
       setStatus('❌ Failed to join. Please try again.');
     }
   };
+
   return (
     <section className="bg-white text-black px-6 py-12">
       <div className="max-w-2xl m-10 space-y-8">
