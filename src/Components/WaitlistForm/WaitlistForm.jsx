@@ -19,22 +19,21 @@ const WaitlistForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = 'https://script.google.com/macros/s/AKfycbx6LgU-kElGfJi6JeHw-6VNy3xBkbN-s5loQoIcJuoWpjmCfIF-oNrAQAeCSX4t_shJRQ/exec'; // Replace with your actual deployed URL
+      const url = 'https://script.google.com/macros/s/AKfycbxQADuykJ7deyfRcymOSP07U2XoOTJAwLqhVMrxIziQ5LEa7A2aVpmkiIuyxT2ZpF3djg/exec';
       await fetch(url, {
         method: 'POST',
-        body: JSON.stringify(formData),
+        mode: 'no-cors', // Add this line
         headers: {
-          'Content-Type': 'application/json'
-        }
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
       });
       setStatus('🎉 Successfully joined the waitlist!');
       setFormData({ fullname: '', email: '', phonenumber: '' });
     } catch (error) {
-      console.error('Submission error:', error);
       setStatus('❌ Failed to join. Please try again.');
     }
   };
-
   return (
     <section className="bg-white text-black px-6 py-12">
       <div className="max-w-2xl m-10 space-y-8">
