@@ -18,19 +18,32 @@ const WaitlistForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Use a proxy endpoint if you have one, or the direct GAS URL
+    // const url = '/api/submit-waitlist'; // Recommended proxy approach
+    // OR direct GAS URL with no-cors:
+     const url = 'https://script.google.com/macros/s/AKfycbwbKz0z2fKjBUE7DVFC3yRqXUoqcuzUKLvV62KrzY4nN6lBcIT08hTkqZCuTeTzZau8ug/exec';
+    
     try {
-      const url = 'https://script.google.com/macros/s/AKfycbxQADuykJ7deyfRcymOSP07U2XoOTJAwLqhVMrxIziQ5LEa7A2aVpmkiIuyxT2ZpF3djg/exec';
-      await fetch(url, {
+      const response = await fetch(url, {
         method: 'POST',
-        mode: 'no-cors', // Add this line
+        // mode: 'no-cors', // Only use with direct GAS URL
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData)
       });
-      setStatus('🎉 Successfully joined the waitlist!');
-      setFormData({ fullname: '', email: '', phonenumber: '' });
+      
+      // Only try to parse JSON if not using no-cors
+      if (response.ok) {
+        const data = await response.json();
+        setStatus('🎉 Successfully joined the waitlist!');
+        setFormData({ fullname: '', email: '', phonenumber: '' });
+      } else {
+        throw new Error('Failed to submit');
+      }
     } catch (error) {
+      console.error('Submission error:', error);
       setStatus('❌ Failed to join. Please try again.');
     }
   };
