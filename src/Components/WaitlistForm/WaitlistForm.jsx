@@ -1,42 +1,98 @@
-import React from 'react'
+import React, { useState } from 'react';
 
 const WaitlistForm = () => {
+  const [formData, setFormData] = useState({
+    fullname: '',
+    email: '',
+    phonenumber: ''
+  });
+
+  const [status, setStatus] = useState('');
+
+  const handleChange = (e) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const url = 'https://script.google.com/macros/s/AKfycbyCj9WrftxcYfbaCpR0cA-jWTPFhu4YXl3fMQrxmXdXR-VGpw2WITE5Ib54O4oIZFqA5Q/exec '; // Replace with your actual deployed URL
+      await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      setStatus('🎉 Successfully joined the waitlist!');
+      setFormData({ fullname: '', email: '', phonenumber: '' });
+    } catch (error) {
+      console.error('Submission error:', error);
+      setStatus('❌ Failed to join. Please try again.');
+    }
+  };
+
   return (
-    <>
-    
     <section className="bg-white text-black px-6 py-12">
-<div className="max-w-2xl m-10 space-y-8">
-  <div>
-    <h2 className="text-2xl md:text-3xl font-bold mb-2">What Is GenPay?</h2>
-    <p className="text-lg">
-      GenPay is an all-in-one social commerce platform designed for the modern event-goer. Users can buy and
-      sell tickets for events, as well as sell event related items such as merchandise, accessories,
-      gadgets and more.
-    </p>
-  </div>
+      <div className="max-w-2xl m-10 space-y-8">
+        <div>
+          <h2 className="text-2xl md:text-3xl font-bold mb-2">What Is GenPay?</h2>
+          <p className="text-lg">
+            GenPay is an all-in-one social commerce platform designed for the modern event-goer...
+          </p>
+        </div>
 
-  <div>
-    <h3 className="text-xl font-bold mb-4">Join our wait-list</h3>
-    <form className="space-y-4">
-      <input type="text" placeholder="Full Name" className="w-full px-4 py-2 border rounded-full" />
-      <input type="email" placeholder="Email Address" className="w-full px-4 py-2 border rounded-full" />
-      <input type="tel" placeholder="Phone Number" className="w-full px-4 py-2 border rounded-full" />
-      <div className="flex items-center space-x-2">
-        <input type="checkbox" id="email-updates" className="accent-black" />
-        <label htmlFor="email-updates" className="text-sm">Receive emails from GenPay for updates</label>
+        <div>
+          <h3 className="text-xl font-bold mb-4">Join our wait-list</h3>
+          <form className="space-y-4" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="fullname"
+              placeholder="Full Name"
+              value={formData.fullname}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-full"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-full"
+              required
+            />
+            <input
+              type="tel"
+              name="phonenumber"
+              placeholder="Phone Number"
+              value={formData.phonenumber}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-full"
+              required
+            />
+            <div className="flex items-center space-x-2">
+              <input type="checkbox" id="email-updates" className="accent-black" />
+              <label htmlFor="email-updates" className="text-sm">
+                Receive emails from GenPay for updates
+              </label>
+            </div>
+            <button
+              type="submit"
+              className="bg-black text-[rgba(229,255,0,1)] font-bold px-6 py-2 rounded-full hover:opacity-90"
+            >
+              JOIN
+            </button>
+            {status && <p className="text-sm mt-2">{status}</p>}
+          </form>
+        </div>
       </div>
-      <button
-        type="submit"
-        className="bg-black text-[rgba(229,255,0,1)] font-bold px-6 py-2 rounded-full hover:opacity-90"
-      >
-        JOIN
-      </button>
-    </form>
-  </div>
-</div>
-</section>
-    </>
-  )
-}
+    </section>
+  );
+};
 
-export default WaitlistForm
+export default WaitlistForm;

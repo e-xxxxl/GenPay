@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import backgroundImage from '../../assets/images/background.jpg';
 import firstheroimg from '../../assets/images/firstheroimg.jpg';
 import secondheroimg from '../../assets/images/secondhero.jpg';
@@ -6,6 +6,11 @@ import thirdheroimg from '../../assets/images/thirdhero.jpg';
 import logo from '../../assets/images/genpaylogo.png';
 import WaitlistForm from '../WaitlistForm/WaitlistForm';
 const Herosection = () => {
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
   return (
     <div className="min-h-screen text-white relative">
       {/* Background Image */}
@@ -19,7 +24,7 @@ const Herosection = () => {
 
       {/* Content Container */}
       <div className="relative z-10">
-        {/* Navigation */}
+        {/* Navigation
         <nav className="flex justify-between items-center p-6">
           <div className="flex items-center">
             <img src={logo} alt="GenPay Logo" className="w20 h-20 mr-2" />
@@ -34,7 +39,66 @@ const Herosection = () => {
               About Us
             </a>
           </div>
-        </nav>
+        </nav> */}
+
+<nav className="flex justify-between items-center p-6 relative z-50">
+  {/* Logo */}
+  <div className="flex items-center">
+    <img src={logo} alt="GenPay Logo" className="w-20 h-20 mr-2" />
+    <p className="text-white">Gen</p>
+    <span className="font-bold text-[rgba(229,255,0,1)]">Pay</span>
+  </div>
+
+  {/* Desktop Nav */}
+  <div className="hidden lg:flex gap-6">
+    <a href="#" className="text-[rgba(229,255,0,1)] font-medium">
+      Home
+    </a>
+    <a href="#" className="text-white font-medium">
+      About Us
+    </a>
+  </div>
+
+  {/* Burger Icon - Small Screens Only */}
+  <div className="lg:hidden">
+  <button
+  onClick={toggleMenu}
+  className="relative w-6 h-5 flex flex-col justify-between items-center z-50 ml-auto md:hidden"
+  aria-label="Toggle menu"
+>
+  <span
+    className={`block w-full h-0.5 bg-[rgba(229,255,0,1)] transform transition duration-300 ease-in-out ${
+      isMenuOpen ? "rotate-45 translate-y-1.5" : ""
+    }`}
+  />
+  <span
+    className={`block w-full h-0.5 bg-[rgba(229,255,0,1)] transition-opacity duration-300 ${
+      isMenuOpen ? "opacity-0" : "opacity-100"
+    }`}
+  />
+  <span
+    className={`block w-full h-0.5 bg-[rgba(229,255,0,1)] transform transition duration-300 ease-in-out ${
+      isMenuOpen ? "-rotate-45 -translate-y-1.5" : ""
+    }`}
+  />
+</button>
+
+  </div>
+</nav>
+
+{/* Mobile Menu */}
+<div
+  className={`lg:hidden fixed inset-0 bg-black bg-opacity-95 z-40 flex flex-col items-center justify-center space-y-8 transition-all duration-500 ease-in-out ${
+    isMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10 pointer-events-none"
+  }`}
+>
+  <a href="#" className="text-[rgba(229,255,0,1)] text-2xl" onClick={toggleMenu}>
+    Home
+  </a>
+  <a href="#" className="text-white text-2xl" onClick={toggleMenu}>
+    About Us
+  </a>
+</div>
 
         {/* Main Content */}
         <main className="container mx-auto px-6 py-12 flex flex-col md:flex-row items-center gap-12">
