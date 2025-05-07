@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+
 const WaitlistForm = () => {
   const [formData, setFormData] = useState({
     fullname: '',
@@ -8,6 +8,7 @@ const WaitlistForm = () => {
   });
 
   const [status, setStatus] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     setFormData(prev => ({
@@ -18,25 +19,34 @@ const WaitlistForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const url = 'https://genpay-backend-1.onrender.com/submit-waitlist';
-
+    setIsSubmitting(true);
+    setStatus('Submitting...');
+    
     try {
-      const response = await axios.post(url, formData, {
+      // Use your proxy server URL here
+      const proxyUrl = 'https://genpay-backend-1.onrender.com/submit-waitlist';
+      
+      const response = await fetch(proxyUrl, {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-        }
+        },
+        body: JSON.stringify(formData)
       });
-
-      if (response.status === 200) {
+      
+      const data = await response.json();
+      
+      if (response.ok) {
         setStatus('🎉 Successfully joined the waitlist!');
         setFormData({ fullname: '', email: '', phonenumber: '' });
       } else {
-        throw new Error('Failed to submit');
+        throw new Error(data.message || 'Failed to submit form');
       }
     } catch (error) {
       console.error('Submission error:', error);
-      setStatus('❌ Failed to join. Please try again.');
+      setStatus(`❌ ${error.message || 'Failed to join. Please try again.'}`);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -88,9 +98,10 @@ const WaitlistForm = () => {
             </div>
             <button
               type="submit"
-              className="bg-black text-[rgba(229,255,0,1)] font-bold px-6 py-2 rounded-full hover:opacity-90"
+              className="bg-black text-[rgba(229,255,0,1)] font-bold px-6 py-2 rounded-full hover:opacity-90 transition"
+              disabled={isSubmitting}
             >
-              JOIN
+              {isSubmitting ? 'SUBMITTING...' : 'JOIN'}
             </button>
             {status && <p className="text-sm mt-2">{status}</p>}
           </form>
@@ -101,4 +112,3 @@ const WaitlistForm = () => {
 };
 
 export default WaitlistForm;
-
