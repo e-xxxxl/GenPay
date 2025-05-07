@@ -53,7 +53,7 @@ const Herosection = () => {
             <button className="bg-[rgba(229,255,0,1)] text-black font-medium px-8 py-2 rounded-full hover:bg-[rgba(210,235,0,1)] transition">About Us</button>
           </div>
 
-          {/* Right Column - Images */}
+          {/* Right Column - Images
           <div className="md:w-1/2 grid grid-cols-2 gap-4 relative">
             <div className="col-span-2 border-2 border-[rgba(229,255,0,1)] rounded-lg overflow-hidden h-40">
               <img
@@ -78,7 +78,35 @@ const Herosection = () => {
                 className="object-cover w-full h-full"
               />
             </div>
-          </div>
+          </div> */}
+
+          {/* Right Column - Tilted Images */}
+<div className="md:w-1/2 flex flex-col items-center gap-4 relative">
+  <div className="border-4 border-[#E5FF00] rounded-lg overflow-hidden h-40 w-48 transform rotate-[15deg]">
+    <img
+      src={firstheroimg || "/placeholder.svg"}
+      alt="People at an event"
+      className="object-cover w-full h-full"
+    />
+  </div>
+
+  <div className="border-4 border-[#E5FF00] rounded-lg overflow-hidden h-40 w-48 transform -rotate-[5deg]">
+    <img
+      src={secondheroimg || "/placeholder.svg"}
+      alt="People dancing"
+      className="object-cover w-full h-full"
+    />
+  </div>
+
+  <div className="border-4 border-[#E5FF00] rounded-lg overflow-hidden h-40 w-48 transform rotate-[15deg]">
+    <img
+      src={thirdheroimg || "/placeholder.svg"}
+      alt="Concert lights"
+      className="object-cover w-full h-full"
+    />
+  </div>
+</div>
+
         </main>
       </div>
    
@@ -88,3 +116,5 @@ const Herosection = () => {
 };
 
 export default Herosection;
+
+
