@@ -19,7 +19,7 @@ const WaitlistForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = 'https://script.google.com/macros/s/AKfycbyCj9WrftxcYfbaCpR0cA-jWTPFhu4YXl3fMQrxmXdXR-VGpw2WITE5Ib54O4oIZFqA5Q/exec '; // Replace with your actual deployed URL
+      const url = 'https://script.google.com/macros/s/AKfycbyOlb2pgQBJeka3nJmiDIDbnjy3n4Wv1dlOo5H7qKIVQ8umpHtyvREvLGxkTsuGhBbGfw/exec '; // Replace with your actual deployed URL
       await fetch(url, {
         method: 'POST',
         body: JSON.stringify(formData),
