@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="bg-[#e5ff00] text-black py-8">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between mb-8">
-          {/* Logo */}
+      
           <div className="mb-6 md:mb-0">
             <img src={logo || "/placeholder.svg"} alt="GenPay Logo" className="h-36" />
           </div>
