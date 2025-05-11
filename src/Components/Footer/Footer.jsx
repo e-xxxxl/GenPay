@@ -11,7 +11,7 @@ const Footer = () => {
             <img src={logo || "/placeholder.svg"} alt="GenPay Logo" className="h-36" />
           </div>
 
-          {/* Company Links */}
+          
           <div className="mb-6 md:mb-0">
             <h3 className="font-bold mb-4">Company</h3>
             <ul className="space-y-2">
