@@ -31,7 +31,7 @@ const Herosection = () => {
           </p>
           <div className="mb-4 md:mb-0">
             <button className="px-5 md:px-6 py-2 rounded-full text-white bg-[rgba(255,0,0,1)] hover:bg-[rgba(255,0,0,0.9)] transition-colors text-sm font-medium">
-              Check Out Social Network
+              About Us
             </button>
           </div>
         </div>
@@ -67,7 +67,7 @@ const Herosection = () => {
           </p>
           <div className="mb-4 md:mb-0">
             <button className="px-5 md:px-6 py-2 rounded-full text-white bg-[rgba(255,0,0,1)] hover:bg-[rgba(255,0,0,0.9)] transition-colors text-sm">
-              Explore Events
+              About Us
             </button>
           </div>
         </div>
