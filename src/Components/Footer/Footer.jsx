@@ -1,64 +1,96 @@
-import logo from '../../assets/images/genpayfooter.png'
-import { Facebook, Instagram, Twitter, TwitterIcon as TikTok } from "lucide-react"
+import { Facebook, Instagram, Twitter, TwitterIcon } from "lucide-react"
 
 const Footer = () => {
   return (
-    <footer className="bg-[#e5ff00] text-black py-8">
+    <footer className="bg-black text-white/80 py-8 border-t border-white/10">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between mb-8">
-      
-          <div className="mb-6 md:mb-0">
-            <img src={logo || "/placeholder.svg"} alt="GenPay Logo" className="h-36" />
-          </div>
-
-          
-          <div className="mb-6 md:mb-0">
-            <h3 className="font-bold mb-4">Company</h3>
-            <ul className="space-y-2">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          {/* Company */}
+          <div>
+            <h3 className="text-white text-sm font-medium mb-4">Company</h3>
+            <ul className="space-y-2 text-xs">
               <li>
-                <a href="#" className="hover:underline">
-                  About Us
+                <a href="#" className="hover:text-white">
+                  Who Are We?
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:underline">
-                  How GenPay Works
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  Contact Us
+                <a href="#" className="hover:text-white">
+                  Careers
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Social Links */}
+          {/* Social */}
           <div>
-            <h3 className="font-bold mb-4">Socials</h3>
-            <ul className="space-y-2">
+            <h3 className="text-white text-sm font-medium mb-4">Social</h3>
+            <ul className="space-y-2 text-xs">
               <li>
-                <a href="#" className="flex items-center hover:underline">
-                  <Facebook size={16} className="mr-2" />
+                <a href="#" className="flex items-center hover:text-white">
+                  <Facebook size={12} className="mr-2" />
                   Facebook
                 </a>
               </li>
               <li>
-                <a href="#" className="flex items-center hover:underline">
-                  <Instagram size={16} className="mr-2" />
+                <a href="#" className="flex items-center hover:text-white">
+                  <Instagram size={12} className="mr-2" />
                   Instagram
                 </a>
               </li>
               <li>
-                <a href="#" className="flex items-center hover:underline">
-                  <Twitter size={16} className="mr-2" />
-                  Twitter (X)
+                <a href="#" className="flex items-center hover:text-white">
+                  <Twitter size={12} className="mr-2" />X (Twitter)
                 </a>
               </li>
               <li>
-                <a href="#" className="flex items-center hover:underline">
-                  <TikTok size={16} className="mr-2" />
+                <a href="#" className="flex items-center hover:text-white">
+                  <TwitterIcon size={12} className="mr-2" />
                   TikTok
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Support */}
+          <div>
+            <h3 className="text-white text-sm font-medium mb-4">Support</h3>
+            <ul className="space-y-2 text-xs">
+              <li>
+                <a href="#" className="hover:text-white">
+                  Help Centre
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-white">
+                  FAQs
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-white">
+                  Get in Touch
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Work With Us */}
+          <div>
+            <h3 className="text-white text-sm font-medium mb-4">Work With Us</h3>
+            <ul className="space-y-2 text-xs">
+              <li>
+                <a href="#" className="hover:text-white">
+                  Become A Partner
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-white">
+                  Testimonials
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-white">
+                  Affiliate Program
                 </a>
               </li>
             </ul>
@@ -66,19 +98,19 @@ const Footer = () => {
         </div>
 
         {/* Bottom Links */}
-        <div className="pt-4 border-t border-black/20 flex flex-col md:flex-row justify-between items-center">
+        <div className="pt-4 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs">
           <div className="mb-4 md:mb-0">
-            <p className="text-sm">copyright © 2025. GenPay Technologies. All Rights Reserved</p>
+            <p>Copyright 2025, GenPay. All Rights Reserved.</p>
           </div>
           <div className="flex space-x-6">
-            <a href="#" className="text-sm hover:underline">
+            <a href="#" className="hover:text-white">
               Terms & Conditions
             </a>
-            <a href="#" className="text-sm hover:underline">
+            <a href="#" className="hover:text-white">
               Privacy Policy
             </a>
-            <a href="#" className="text-sm hover:underline">
-              Refund Policy
+            <a href="#" className="hover:text-white">
+              Cookies
             </a>
           </div>
         </div>
