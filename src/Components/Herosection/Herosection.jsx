@@ -8,6 +8,14 @@ const Herosection = () => {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+   const scrollToWaitlistForm = () => {
+    const element = document.getElementById('WaitlistForm');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    
+  };
+
   return (
     <>
       <Navbar />
@@ -30,7 +38,7 @@ const Herosection = () => {
             network, and make new friends around shared event experiences.
           </p>
           <div className="mb-4 md:mb-0">
-            <button className="px-5 md:px-6 py-2 rounded-full text-white bg-[rgba(255,0,0,1)] hover:bg-[rgba(255,0,0,0.9)] transition-colors text-sm font-medium">
+            <button  onClick={scrollToWaitlistForm} className="px-5 md:px-6 py-2 rounded-full text-white bg-[rgba(255,0,0,1)] hover:bg-[rgba(255,0,0,0.9)] transition-colors text-sm font-medium">
               About Us
             </button>
           </div>
@@ -66,9 +74,9 @@ const Herosection = () => {
             Your next big memory starts here!
           </p>
           <div className="mb-4 md:mb-0">
-            <button className="px-5 md:px-6 py-2 rounded-full text-white bg-[rgba(255,0,0,1)] hover:bg-[rgba(255,0,0,0.9)] transition-colors text-sm">
-              About Us
-            </button>
+            <a href='https://t.me/+DWyR1oTd-j9kY2Nk '  className="px-5 md:px-6 py-2 rounded-full text-white bg-[rgba(255,0,0,1)] hover:bg-[rgba(255,0,0,0.9)] transition-colors text-sm">
+             Join our telegram
+            </a>
           </div>
         </div>
       </div>

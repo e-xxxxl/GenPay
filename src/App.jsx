@@ -9,17 +9,18 @@ import WaitlistForm from './Components/WaitlistForm/WaitlistForm'
 import Footer from './Components/Footer/Footer'
 
 function App() {
-  
-
   return (
     <>
-    <Analytics/>
-     <Herosection/>
-    <WaitlistForm/>
-    <Footer/>
-
-
-
+      <Analytics />
+      <div className="fade-in hero-section">
+        <Herosection />
+      </div>
+      <div className="fade-in waitlist-form">
+        <WaitlistForm />
+      </div>
+      <div className="fade-in footer">
+        <Footer />
+      </div>
     </>
   )
 }
